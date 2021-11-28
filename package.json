@@ -1,0 +1,45 @@
+{
+  "name": "edman",
+  "version": "0.0.0",
+  "author": "Guilherme Prá Vieira (super.driver.512@gmail.com)",
+  "license": "AGPL-3.0+",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development budo index.js -Pld public -- -t babelify -t envify",
+    "build": "cross-env NODE_ENV=production browserify -t babelify -t envify index.js >public/index.js"
+  },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-syntax-optional-chaining",
+      "@babel/plugin-transform-modules-commonjs",
+      "@dominant/core/babelatrix",
+      [
+        "@babel/plugin-transform-react-jsx",
+        {
+          "pragma": "d.el",
+          "pragmaFrag": "d.JsxFragment",
+          "throwIfNamespace": false
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "@dominant/core": "^0.1.13"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/plugin-proposal-optional-chaining": "^7.16.0",
+    "@babel/plugin-syntax-optional-chaining": "^7.8.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.13",
+    "@babel/plugin-transform-react-jsx": "^7.12.13",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.0",
+    "budo": "^11.6.4",
+    "cross-env": "^7.0.3",
+    "envify": "^4.1.0"
+  },
+  "publishConfig": {
+    "access": "private"
+  }
+}
